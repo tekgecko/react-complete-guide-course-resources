@@ -1,8 +1,25 @@
+import {React, useState} from "react";
+import Sidebar from "./Sidebar";
+import ProjectView from "./ProjectView";
+import NoProject from "./NoProject";
+
 function App() {
+  const [selectedPage, setSelectedPage] = useState("no-project");
+
+  function switchProject() {
+    console.log("Switching project...");
+  }
+
+let content;
+  if (selectedPage === "no-project") {
+    content = <NoProject />;
+  }
+
   return (
-    <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
-    </>
+    <main className="flex">
+      <Sidebar switchProject={switchProject}/>
+      {content}
+    </main>
   );
 }
 
